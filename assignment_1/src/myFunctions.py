@@ -2,8 +2,10 @@ import boto3
 import os
 import re
 import json
+import numpy as np
 from typing import Union
 from pydantic import BaseModel
+
 
 class csvInfo(BaseModel):
     fileName : str=None
@@ -147,14 +149,27 @@ def aircraft_fileName_request(request):
  
     for obj in mybuckets.Bucket('damg7245-amazon-s3').objects.all():
 
-        body = obj.get()['Body'].read()
+        body = obj.get()['Body'].read() # bytes
 
-        body_str = body.decode('utf-8')
+        body_str = body.decode('utf-8') # str
 
-        csv_header_value_list = body_str.split() # split body into 1 list contain csv headers and values
-        csv_header_list = csv_header_value_list[0].split(',') # 'filename,width,height,class,xmin,ymin,xmax,ymax'
+        csv_header_value_list = body_str.split() # split body into list contain csv headers and values "\n"
         
-        csv_value_list = csv_header_value_list[1].split(',') # '00b2add164cb42440a52064e390ea3d2,1280,850,B1,322,112,893,618'
+        result = {}
+
+        if(len(csv_header_value_list) > 2):
+            for i in range(0, len(csv_header_value_list)):
+                for j in range(0, len(csv_header_value_list)):
+                    result[str(i)][j] = 
+                    
+        else:
+            csv_header_list = csv_header_value_list[0].split(',') # 'filename,width,height,class,xmin,ymin,xmax,ymax'
+        
+            csv_value_list = csv_header_value_list[1].split(',') # '00b2add164cb42440a52064e390ea3d2,1280,850,B1,322,112,893,618'
+
+       
+
+
 
         if(csv_value_list[0] == request):
             aircraft_info = dict(zip(csv_header_list,csv_value_list))
