@@ -94,6 +94,7 @@ def aircraft_class_request(request):
         body_str = body.decode('utf-8')
 
         csv_header_value_list = body_str.split() # split body into 1 list contain csv headers and values
+        
         csv_header_list = csv_header_value_list[0].split(',') # 'filename,width,height,class,xmin,ymin,xmax,ymax'
         
         csv_value_list = csv_header_value_list[1].split(',') # '00b2add164cb42440a52064e390ea3d2,1280,850,B1,322,112,893,618'
@@ -131,58 +132,58 @@ def aircraft_class_request(request):
     #     pass
 
     
-def aircraft_fileName_request(request):
-    # request_body = json.loads(request)
-    # data = request_body.get('class')
+# def aircraft_fileName_request(request):
+#     # request_body = json.loads(request)
+#     # data = request_body.get('class')
 
-    info_list = {}
-    data = json.loads(json.dumps(info_list))
-    count = 0
+#     info_list = {}
+#     data = json.loads(json.dumps(info_list))
+#     count = 0
 
-    # S3 buckets
-    mybuckets = boto3.resource(
-        service_name='s3',
-        region_name='us-east-1',
-        aws_access_key_id='AKIAXUUXEPBEC4KILU6U',
-        aws_secret_access_key='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'
-    )
+#     # S3 buckets
+#     mybuckets = boto3.resource(
+#         service_name='s3',
+#         region_name='us-east-1',
+#         aws_access_key_id='AKIAXUUXEPBEC4KILU6U',
+#         aws_secret_access_key='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'
+#     )
  
-    for obj in mybuckets.Bucket('damg7245-amazon-s3').objects.all():
+#     for obj in mybuckets.Bucket('damg7245-amazon-s3').objects.all():
 
-        body = obj.get()['Body'].read() # bytes
+#         body = obj.get()['Body'].read() # bytes
 
-        body_str = body.decode('utf-8') # str
+#         body_str = body.decode('utf-8') # str
 
-        csv_header_value_list = body_str.split() # split body into list contain csv headers and values "\n"
+#         csv_header_value_list = body_str.split() # split body into list contain csv headers and values "\n"
         
-        result = {}
+#         result = {}
 
-        if(len(csv_header_value_list) > 2):
-            for i in range(0, len(csv_header_value_list)):
-                for j in range(0, len(csv_header_value_list)):
-                    result[str(i)][j] = 
+#         if(len(csv_header_value_list) > 2):
+#             for i in range(0, len(csv_header_value_list)):
+#                 for j in range(0, len(csv_header_value_list)):
+#                     result[str(i)][j] = 
                     
-        else:
-            csv_header_list = csv_header_value_list[0].split(',') # 'filename,width,height,class,xmin,ymin,xmax,ymax'
+#         else:
+#             csv_header_list = csv_header_value_list[0].split(',') # 'filename,width,height,class,xmin,ymin,xmax,ymax'
         
-            csv_value_list = csv_header_value_list[1].split(',') # '00b2add164cb42440a52064e390ea3d2,1280,850,B1,322,112,893,618'
+#             csv_value_list = csv_header_value_list[1].split(',') # '00b2add164cb42440a52064e390ea3d2,1280,850,B1,322,112,893,618'
 
        
 
 
 
-        if(csv_value_list[0] == request):
-            aircraft_info = dict(zip(csv_header_list,csv_value_list))
-            count += 1
-            str_count = str(count)
-            aircraft_no = 'NO.' + str_count
-            data[aircraft_no] = aircraft_info
-            #break;
-        else:
-            continue
+#         if(csv_value_list[0] == request):
+#             aircraft_info = dict(zip(csv_header_list,csv_value_list))
+#             count += 1
+#             str_count = str(count)
+#             aircraft_no = 'NO.' + str_count
+#             data[aircraft_no] = aircraft_info
+#             #break;
+#         else:
+#             continue
 
-    response = data
-    return response
+#     response = data
+#     return response
 
 
     
