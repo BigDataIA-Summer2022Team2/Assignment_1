@@ -5,9 +5,19 @@ import myFunctions
 app = FastAPI()
 
 
-@app.post("/csvinfo/{csvInfo}")
-async def postCsvInfo(request : myFunctions.csvInfo):
-    return request
+
+
+@app.post("/post/{aircraft_class}")
+async def postCsvInfo(request : str):
+    response = myFunctions.aircraft_class_request(request)
+    return response
+
+
+@app.post("/post/fileName/{aircraft_fileName}")
+async def postCsvInfo(request : str):
+    response = myFunctions.aircraft_fileName_request(request)
+    return response
+
 
 @app.get('/api/')
 async def getCsvFileInfo():
