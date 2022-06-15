@@ -8,1805 +8,100 @@
         "max_value": 200,
         "min_value": 200
       },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {},
-            "metric_dependencies": null,
-            "metric_name": "table.row_count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
+      "meta": {}
     },
     {
       "expectation_type": "expect_table_columns_to_match_set",
       "kwargs": {
         "column_set": [
-          "image_size",
-          "image_Frames",
-          "image_Animated",
-          "Unnamed: 0",
-          "image_Format",
-          "image_mode",
-          "index",
           "image_Height",
-          "image_Width"
-        ],
-        "exact_match": null
+          "index",
+          "image_size",
+          "image_Width",
+          "image_Animated",
+          "image_Frames",
+          "Unnamed: 0",
+          "image_mode",
+          "image_Format"
+        ]
       },
-      "meta": {
-        "profiler_details": {
-          "success_ratio": 1.0
-        }
-      }
+      "meta": {}
     },
     {
-      "expectation_type": "expect_column_values_to_not_be_null",
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "image_Height",
+        "max_value": 4000,
+        "min_value": 0
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "image_Width",
+        "max_value": 4000,
+        "min_value": 0
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "image_Frames",
+        "max_value": 1,
+        "min_value": 1
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
       "kwargs": {
         "column": "image_size"
       },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_size"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column_values.nonnull.unexpected_count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
+      "meta": {}
     },
     {
-      "expectation_type": "expect_column_values_to_not_be_null",
+      "expectation_type": "expect_column_to_exist",
       "kwargs": {
         "column": "image_Height"
       },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Height"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column_values.nonnull.unexpected_count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
+      "meta": {}
     },
     {
-      "expectation_type": "expect_column_values_to_not_be_null",
+      "expectation_type": "expect_column_to_exist",
       "kwargs": {
         "column": "image_Width"
       },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Width"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column_values.nonnull.unexpected_count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
+      "meta": {}
     },
     {
-      "expectation_type": "expect_column_values_to_not_be_null",
+      "expectation_type": "expect_column_to_exist",
       "kwargs": {
         "column": "image_Format"
       },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Format"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column_values.nonnull.unexpected_count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
+      "meta": {}
     },
     {
-      "expectation_type": "expect_column_values_to_not_be_null",
+      "expectation_type": "expect_column_to_exist",
       "kwargs": {
         "column": "image_mode"
       },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_mode"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column_values.nonnull.unexpected_count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
+      "meta": {}
     },
     {
-      "expectation_type": "expect_column_values_to_not_be_null",
-      "kwargs": {
-        "column": "image_Animated"
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Animated"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column_values.nonnull.unexpected_count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_not_be_null",
+      "expectation_type": "expect_column_to_exist",
       "kwargs": {
         "column": "image_Frames"
       },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Frames"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column_values.nonnull.unexpected_count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_min_to_be_between",
-      "kwargs": {
-        "column": "image_Height",
-        "max_value": 303,
-        "min_value": 303,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Height"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.min",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_max_to_be_between",
-      "kwargs": {
-        "column": "image_Height",
-        "max_value": 2927,
-        "min_value": 2927,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Height"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.max",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_between",
-      "kwargs": {
-        "column": "image_Height",
-        "max_value": 2927,
-        "min_value": 303,
-        "mostly": 1.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "column_max_values_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_Height"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column.max",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          },
-          "column_min_values_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_Height"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column.min",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          }
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_quantile_values_to_be_between",
-      "kwargs": {
-        "allow_relative_error": "linear",
-        "column": "image_Height",
-        "quantile_ranges": {
-          "quantiles": [
-            0.25,
-            0.5,
-            0.75
-          ],
-          "value_ranges": [
-            [
-              717.0,
-              717.0
-            ],
-            [
-              853.0,
-              853.0
-            ],
-            [
-              1047.8,
-              1047.8
-            ]
-          ]
-        }
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Height"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.max",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_median_to_be_between",
-      "kwargs": {
-        "column": "image_Height",
-        "max_value": 853.0,
-        "min_value": 853.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Height"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.median",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_mean_to_be_between",
-      "kwargs": {
-        "column": "image_Height",
-        "max_value": 949.6,
-        "min_value": 949.6,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Height"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.mean",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_stdev_to_be_between",
-      "kwargs": {
-        "column": "image_Height",
-        "max_value": 401.5,
-        "min_value": 401.5,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Height"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.standard_deviation",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_min_to_be_between",
-      "kwargs": {
-        "column": "image_Width",
-        "max_value": 436,
-        "min_value": 436,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Width"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.min",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_max_to_be_between",
-      "kwargs": {
-        "column": "image_Width",
-        "max_value": 3873,
-        "min_value": 3873,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Width"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.max",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_between",
-      "kwargs": {
-        "column": "image_Width",
-        "max_value": 3873,
-        "min_value": 436,
-        "mostly": 1.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "column_max_values_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_Width"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column.max",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          },
-          "column_min_values_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_Width"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column.min",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          }
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_quantile_values_to_be_between",
-      "kwargs": {
-        "allow_relative_error": "linear",
-        "column": "image_Width",
-        "quantile_ranges": {
-          "quantiles": [
-            0.25,
-            0.5,
-            0.75
-          ],
-          "value_ranges": [
-            [
-              1079.8,
-              1079.8
-            ],
-            [
-              1280.0,
-              1280.0
-            ],
-            [
-              1600.0,
-              1600.0
-            ]
-          ]
-        }
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Width"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.max",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_median_to_be_between",
-      "kwargs": {
-        "column": "image_Width",
-        "max_value": 1280.0,
-        "min_value": 1280.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Width"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.median",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_mean_to_be_between",
-      "kwargs": {
-        "column": "image_Width",
-        "max_value": 1377.6,
-        "min_value": 1377.6,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Width"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.mean",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_stdev_to_be_between",
-      "kwargs": {
-        "column": "image_Width",
-        "max_value": 561.0,
-        "min_value": 561.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Width"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.standard_deviation",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_min_to_be_between",
-      "kwargs": {
-        "column": "image_Frames",
-        "max_value": 1,
-        "min_value": 1,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Frames"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.min",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_max_to_be_between",
-      "kwargs": {
-        "column": "image_Frames",
-        "max_value": 1,
-        "min_value": 1,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Frames"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.max",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_between",
-      "kwargs": {
-        "column": "image_Frames",
-        "max_value": 1,
-        "min_value": 1,
-        "mostly": 1.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "column_max_values_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_Frames"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column.max",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          },
-          "column_min_values_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_Frames"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column.min",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          }
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_quantile_values_to_be_between",
-      "kwargs": {
-        "allow_relative_error": "linear",
-        "column": "image_Frames",
-        "quantile_ranges": {
-          "quantiles": [
-            0.25,
-            0.5,
-            0.75
-          ],
-          "value_ranges": [
-            [
-              1.0,
-              1.0
-            ],
-            [
-              1.0,
-              1.0
-            ],
-            [
-              1.0,
-              1.0
-            ]
-          ]
-        }
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Frames"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.max",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_median_to_be_between",
-      "kwargs": {
-        "column": "image_Frames",
-        "max_value": 1.0,
-        "min_value": 1.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Frames"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.median",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_mean_to_be_between",
-      "kwargs": {
-        "column": "image_Frames",
-        "max_value": 1.0,
-        "min_value": 1.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Frames"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.mean",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_stdev_to_be_between",
-      "kwargs": {
-        "column": "image_Frames",
-        "max_value": 0.0,
-        "min_value": 0.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Frames"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.standard_deviation",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_value_lengths_to_be_between",
-      "kwargs": {
-        "column": "image_size",
-        "max_value": 12,
-        "min_value": 10,
-        "mostly": 1.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "column_max_length_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_size"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column_values.length.max",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          },
-          "column_min_length_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_size"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column_values.length.min",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          }
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_match_regex",
-      "kwargs": {
-        "column": "image_size",
-        "mostly": 1.0,
-        "regex": "(?:[A-Fa-f0-9]){0,4}(?: ?:? ?(?:[A-Fa-f0-9]){0,4}){0,7}"
-      },
-      "meta": {
-        "profiler_details": {
-          "evaluated_regexes": {
-            "(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})(?:.(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})){3}": 0.0,
-            "(?:[A-Fa-f0-9]){0,4}(?: ?:? ?(?:[A-Fa-f0-9]){0,4}){0,7}": 1.0,
-            "-?\\d+": 1.0,
-            "-?\\d+(?:\\.\\d*)?": 1.0,
-            "<\\/?(?:p|a|b|img)(?: \\/)?>": 0.0,
-            "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+": 1.0,
-            "\\b[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}-[0-5][0-9a-fA-F]{3}-[089ab][0-9a-fA-F]{3}-\\b[0-9a-fA-F]{12}\\b ": 0.0,
-            "\\d+": 1.0,
-            "\\s+$": 0.0,
-            "^\\s+": 0.0,
-            "https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b(?:[-a-zA-Z0-9@:%_\\+.~#()?&//=]*)": 0.0
-          },
-          "success_ratio": 1.0
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_value_lengths_to_be_between",
-      "kwargs": {
-        "column": "image_Format",
-        "max_value": 4,
-        "min_value": 4,
-        "mostly": 1.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "column_max_length_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_Format"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column_values.length.max",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          },
-          "column_min_length_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_Format"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column_values.length.min",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          }
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_match_regex",
-      "kwargs": {
-        "column": "image_Format",
-        "mostly": 1.0,
-        "regex": "(?:[A-Fa-f0-9]){0,4}(?: ?:? ?(?:[A-Fa-f0-9]){0,4}){0,7}"
-      },
-      "meta": {
-        "profiler_details": {
-          "evaluated_regexes": {
-            "(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})(?:.(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})){3}": 0.0,
-            "(?:[A-Fa-f0-9]){0,4}(?: ?:? ?(?:[A-Fa-f0-9]){0,4}){0,7}": 1.0,
-            "-?\\d+": 0.0,
-            "-?\\d+(?:\\.\\d*)?": 0.0,
-            "<\\/?(?:p|a|b|img)(?: \\/)?>": 0.0,
-            "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+": 1.0,
-            "\\b[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}-[0-5][0-9a-fA-F]{3}-[089ab][0-9a-fA-F]{3}-\\b[0-9a-fA-F]{12}\\b ": 0.0,
-            "\\d+": 0.0,
-            "\\s+$": 0.0,
-            "^\\s+": 0.0,
-            "https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b(?:[-a-zA-Z0-9@:%_\\+.~#()?&//=]*)": 0.0
-          },
-          "success_ratio": 1.0
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_value_lengths_to_be_between",
-      "kwargs": {
-        "column": "image_mode",
-        "max_value": 3,
-        "min_value": 3,
-        "mostly": 1.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "column_max_length_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_mode"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column_values.length.max",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          },
-          "column_min_length_range_estimator": {
-            "metric_configuration": {
-              "domain_kwargs": {
-                "column": "image_mode"
-              },
-              "metric_dependencies": null,
-              "metric_name": "column_values.length.min",
-              "metric_value_kwargs": null
-            },
-            "num_batches": 1
-          }
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_match_regex",
-      "kwargs": {
-        "column": "image_mode",
-        "mostly": 1.0,
-        "regex": "(?:[A-Fa-f0-9]){0,4}(?: ?:? ?(?:[A-Fa-f0-9]){0,4}){0,7}"
-      },
-      "meta": {
-        "profiler_details": {
-          "evaluated_regexes": {
-            "(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})(?:.(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})){3}": 0.0,
-            "(?:[A-Fa-f0-9]){0,4}(?: ?:? ?(?:[A-Fa-f0-9]){0,4}){0,7}": 1.0,
-            "-?\\d+": 0.0,
-            "-?\\d+(?:\\.\\d*)?": 0.0,
-            "<\\/?(?:p|a|b|img)(?: \\/)?>": 0.0,
-            "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+": 1.0,
-            "\\b[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}-[0-5][0-9a-fA-F]{3}-[089ab][0-9a-fA-F]{3}-\\b[0-9a-fA-F]{12}\\b ": 0.0,
-            "\\d+": 0.0,
-            "\\s+$": 0.0,
-            "^\\s+": 0.0,
-            "https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b(?:[-a-zA-Z0-9@:%_\\+.~#()?&//=]*)": 0.0
-          },
-          "success_ratio": 1.0
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "image_size",
-        "mostly": 1.0,
-        "value_set": [
-          "(1079, 1600)",
-          "(1200, 1825)",
-          "(1024, 732)",
-          "(819, 1024)",
-          "(1152, 768)",
-          "(1602, 942)",
-          "(2048, 1536)",
-          "(1280, 731)",
-          "(3508, 2339)",
-          "(1280, 692)",
-          "(1023, 795)",
-          "(1870, 1227)",
-          "(2000, 1600)",
-          "(1200, 800)",
-          "(1600, 693)",
-          "(1200, 630)",
-          "(1300, 731)",
-          "(1600, 906)",
-          "(600, 400)",
-          "(735, 413)",
-          "(800, 450)",
-          "(1200, 674)",
-          "(1000, 626)",
-          "(1280, 842)",
-          "(1280, 673)",
-          "(900, 675)",
-          "(2614, 1745)",
-          "(1595, 659)",
-          "(2048, 1365)",
-          "(512, 303)",
-          "(1031, 1200)",
-          "(1280, 856)",
-          "(960, 640)",
-          "(960, 654)",
-          "(1100, 550)",
-          "(3458, 2183)",
-          "(1280, 752)",
-          "(1154, 925)",
-          "(1024, 731)",
-          "(1600, 1065)",
-          "(1280, 886)",
-          "(1920, 803)",
-          "(1280, 914)",
-          "(700, 495)",
-          "(1024, 1540)",
-          "(1153, 769)",
-          "(1200, 761)",
-          "(1200, 897)",
-          "(1100, 619)",
-          "(1305, 831)",
-          "(2100, 1500)",
-          "(1200, 641)",
-          "(2100, 1395)",
-          "(1332, 850)",
-          "(1280, 834)",
-          "(1600, 900)",
-          "(1024, 768)",
-          "(1275, 1024)",
-          "(2495, 1645)",
-          "(1280, 996)",
-          "(1936, 1040)",
-          "(1728, 1152)",
-          "(1600, 1156)",
-          "(640, 640)",
-          "(1600, 1278)",
-          "(1000, 667)",
-          "(564, 564)",
-          "(436, 600)",
-          "(853, 495)",
-          "(1600, 1063)",
-          "(1400, 932)",
-          "(1920, 1080)",
-          "(1080, 720)",
-          "(1000, 666)",
-          "(1200, 771)",
-          "(1600, 1044)",
-          "(700, 467)",
-          "(1024, 684)",
-          "(750, 504)",
-          "(830, 409)",
-          "(2464, 1632)",
-          "(1170, 773)",
-          "(1024, 683)",
-          "(1280, 720)",
-          "(1280, 831)",
-          "(728, 455)",
-          "(3344, 1989)",
-          "(1400, 2149)",
-          "(1000, 541)",
-          "(1838, 1033)",
-          "(1000, 650)",
-          "(1080, 1920)",
-          "(1100, 825)",
-          "(1782, 1119)",
-          "(2815, 1845)",
-          "(1280, 790)",
-          "(2100, 1397)",
-          "(1024, 672)",
-          "(1280, 869)",
-          "(1024, 757)",
-          "(1600, 1043)",
-          "(512, 341)",
-          "(1365, 2047)",
-          "(681, 1024)",
-          "(2000, 1418)",
-          "(1300, 868)",
-          "(1024, 813)",
-          "(1200, 857)",
-          "(2000, 1240)",
-          "(1200, 675)",
-          "(2048, 1323)",
-          "(1000, 714)",
-          "(1240, 698)",
-          "(1449, 960)",
-          "(1536, 1024)",
-          "(620, 387)",
-          "(840, 600)",
-          "(1080, 1076)",
-          "(1600, 1016)",
-          "(1300, 867)",
-          "(2000, 1333)",
-          "(1024, 681)",
-          "(1280, 828)",
-          "(1800, 1370)",
-          "(1280, 853)",
-          "(1280, 746)",
-          "(1500, 969)",
-          "(2818, 1895)",
-          "(1841, 1227)",
-          "(2560, 1701)",
-          "(1400, 933)",
-          "(2100, 1378)",
-          "(2510, 1673)",
-          "(1280, 750)",
-          "(1280, 603)",
-          "(1280, 854)",
-          "(1170, 778)",
-          "(880, 1325)",
-          "(1080, 718)",
-          "(1280, 894)",
-          "(650, 975)",
-          "(1630, 1202)",
-          "(590, 369)",
-          "(2000, 1365)",
-          "(700, 723)",
-          "(1280, 863)",
-          "(1464, 858)",
-          "(3873, 2927)",
-          "(1920, 1046)",
-          "(1024, 682)",
-          "(1200, 713)",
-          "(1200, 960)",
-          "(800, 1053)",
-          "(1200, 848)",
-          "(2000, 1125)",
-          "(1280, 740)",
-          "(1600, 1596)",
-          "(1280, 857)",
-          "(1300, 864)",
-          "(3720, 1896)",
-          "(1280, 850)",
-          "(1200, 752)"
-        ]
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_size"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_unique_value_count_to_be_between",
-      "kwargs": {
-        "column": "image_size",
-        "max_value": 162,
-        "min_value": 162,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_size"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values.count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
-      "kwargs": {
-        "column": "image_size",
-        "max_value": 0.81,
-        "min_value": 0.81,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_size"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.unique_proportion",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "image_Height",
-        "mostly": 1.0,
-        "value_set": [
-          1024,
-          1536,
-          1540,
-          1033,
-          1040,
-          1043,
-          1044,
-          1046,
-          541,
-          1053,
-          550,
-          1063,
-          1065,
-          564,
-          1076,
-          1080,
-          1596,
-          1600,
-          600,
-          603,
-          1119,
-          1632,
-          1125,
-          2149,
-          619,
-          1645,
-          626,
-          630,
-          640,
-          641,
-          1152,
-          1156,
-          2183,
-          1673,
-          650,
-          654,
-          659,
-          666,
-          667,
-          672,
-          673,
-          674,
-          675,
-          1701,
-          681,
-          682,
-          683,
-          684,
-          1200,
-          1202,
-          692,
-          693,
-          698,
-          713,
-          714,
-          1227,
-          718,
-          720,
-          1745,
-          723,
-          1240,
-          731,
-          732,
-          740,
-          746,
-          750,
-          752,
-          757,
-          761,
-          1278,
-          768,
-          769,
-          771,
-          773,
-          778,
-          790,
-          795,
-          800,
-          1825,
-          803,
-          2339,
-          1323,
-          813,
-          1325,
-          303,
-          1333,
-          1845,
-          825,
-          828,
-          831,
-          834,
-          842,
-          848,
-          850,
-          341,
-          853,
-          854,
-          856,
-          857,
-          858,
-          1365,
-          1370,
-          863,
-          864,
-          1378,
-          867,
-          868,
-          869,
-          1895,
-          1896,
-          2927,
-          369,
-          1395,
-          1397,
-          886,
-          894,
-          1920,
-          897,
-          387,
-          900,
-          906,
-          1418,
-          400,
-          914,
-          409,
-          413,
-          925,
-          932,
-          933,
-          942,
-          960,
-          450,
-          1989,
-          455,
-          969,
-          975,
-          467,
-          1016,
-          1500,
-          996,
-          495,
-          504,
-          2047
-        ]
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Height"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_unique_value_count_to_be_between",
-      "kwargs": {
-        "column": "image_Height",
-        "max_value": 143,
-        "min_value": 143,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Height"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values.count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
-      "kwargs": {
-        "column": "image_Height",
-        "max_value": 0.715,
-        "min_value": 0.715,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Height"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.unique_proportion",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "image_Width",
-        "mostly": 1.0,
-        "value_set": [
-          512,
-          640,
-          1024,
-          1152,
-          900,
-          1153,
-          1154,
-          1031,
-          1280,
-          1536,
-          650,
-          1800,
-          3720,
-          1936,
-          3344,
-          1170,
-          1300,
-          1305,
-          800,
-          2464,
-          3873,
-          681,
-          1449,
-          1838,
-          1200,
-          1841,
-          819,
-          436,
-          564,
-          1332,
-          1079,
-          1080,
-          1464,
-          2100,
-          1595,
-          700,
-          1920,
-          830,
-          2495,
-          960,
-          1600,
-          1602,
-          1728,
-          2048,
-          840,
-          1100,
-          590,
-          1870,
-          2000,
-          2510,
-          2560,
-          2815,
-          853,
-          1365,
-          728,
-          600,
-          1240,
-          1500,
-          1630,
-          735,
-          2614,
-          2818,
-          1000,
-          620,
-          750,
-          880,
-          3508,
-          1782,
-          3458,
-          1400,
-          1275,
-          1023
-        ]
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Width"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_unique_value_count_to_be_between",
-      "kwargs": {
-        "column": "image_Width",
-        "max_value": 72,
-        "min_value": 72,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Width"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values.count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
-      "kwargs": {
-        "column": "image_Width",
-        "max_value": 0.36,
-        "min_value": 0.36,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Width"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.unique_proportion",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "image_Format",
-        "mostly": 1.0,
-        "value_set": [
-          "JPEG",
-          "WEBP"
-        ]
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Format"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_unique_value_count_to_be_between",
-      "kwargs": {
-        "column": "image_Format",
-        "max_value": 2,
-        "min_value": 2,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Format"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values.count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
-      "kwargs": {
-        "column": "image_Format",
-        "max_value": 0.01,
-        "min_value": 0.01,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Format"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.unique_proportion",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "image_mode",
-        "mostly": 1.0,
-        "value_set": [
-          "RGB"
-        ]
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_mode"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_unique_value_count_to_be_between",
-      "kwargs": {
-        "column": "image_mode",
-        "max_value": 1,
-        "min_value": 1,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_mode"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values.count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
-      "kwargs": {
-        "column": "image_mode",
-        "max_value": 0.005,
-        "min_value": 0.005,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_mode"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.unique_proportion",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "image_Frames",
-        "mostly": 1.0,
-        "value_set": [
-          1
-        ]
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Frames"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_unique_value_count_to_be_between",
-      "kwargs": {
-        "column": "image_Frames",
-        "max_value": 1,
-        "min_value": 1,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Frames"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values.count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
-      "kwargs": {
-        "column": "image_Frames",
-        "max_value": 0.005,
-        "min_value": 0.005,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Frames"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.unique_proportion",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
-        "column": "image_Animated",
-        "mostly": 1.0,
-        "value_set": [
-          false
-        ]
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Animated"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_unique_value_count_to_be_between",
-      "kwargs": {
-        "column": "image_Animated",
-        "max_value": 1,
-        "min_value": 1,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Animated"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.distinct_values.count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
-      "kwargs": {
-        "column": "image_Animated",
-        "max_value": 0,
-        "min_value": 0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "image_Animated"
-            },
-            "metric_dependencies": null,
-            "metric_name": "column.unique_proportion",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
+      "meta": {}
     }
   ],
   "ge_cloud_id": null,
   "meta": {
     "citations": [
       {
-        "citation_date": "2022-06-14T21:42:14.020470Z",
+        "citation_date": "2022-06-15T04:27:06.953850Z",
         "comment": "Suite created by Rule-Based Profiler with the configuration included.",
         "profiler_config": {
           "config_version": 1.0,
@@ -1823,8 +118,15 @@
                   "_id"
                 ],
                 "exclude_column_names": [
-                  "Unnamed: 0",
+                  "image_Height",
                   "index",
+                  "image_size",
+                  "image_Width",
+                  "image_Animated",
+                  "image_Frames",
+                  "Unnamed: 0",
+                  "image_mode",
+                  "image_Format",
                   "id"
                 ],
                 "exclude_semantic_types": [
@@ -1995,7 +297,14 @@
                 "exclude_column_name_suffixes": null,
                 "exclude_column_names": [
                   "Unnamed: 0",
-                  "index"
+                  "index",
+                  "image_size",
+                  "image_Height",
+                  "image_Width",
+                  "image_Format",
+                  "image_mode",
+                  "image_Animated",
+                  "image_Frames"
                 ],
                 "exclude_semantic_types": null,
                 "include_column_name_suffixes": null,
@@ -2113,7 +422,14 @@
                 "exclude_column_name_suffixes": null,
                 "exclude_column_names": [
                   "Unnamed: 0",
-                  "index"
+                  "index",
+                  "image_size",
+                  "image_Height",
+                  "image_Width",
+                  "image_Format",
+                  "image_mode",
+                  "image_Animated",
+                  "image_Frames"
                 ],
                 "exclude_semantic_types": null,
                 "include_column_name_suffixes": null,
@@ -2231,7 +547,14 @@
                 "exclude_column_name_suffixes": null,
                 "exclude_column_names": [
                   "Unnamed: 0",
-                  "index"
+                  "index",
+                  "image_size",
+                  "image_Height",
+                  "image_Width",
+                  "image_Format",
+                  "image_mode",
+                  "image_Animated",
+                  "image_Frames"
                 ],
                 "exclude_semantic_types": null,
                 "include_column_name_suffixes": null,
@@ -2349,7 +672,14 @@
                 "exclude_column_name_suffixes": null,
                 "exclude_column_names": [
                   "Unnamed: 0",
-                  "index"
+                  "index",
+                  "image_size",
+                  "image_Height",
+                  "image_Width",
+                  "image_Format",
+                  "image_mode",
+                  "image_Animated",
+                  "image_Frames"
                 ],
                 "exclude_semantic_types": [
                   "text"
@@ -2667,7 +997,14 @@
                 ],
                 "exclude_column_names": [
                   "Unnamed: 0",
-                  "index"
+                  "index",
+                  "image_size",
+                  "image_Height",
+                  "image_Width",
+                  "image_Format",
+                  "image_mode",
+                  "image_Animated",
+                  "image_Frames"
                 ],
                 "exclude_semantic_types": [
                   "identifier"
@@ -3252,7 +1589,14 @@
                 "exclude_column_name_suffixes": null,
                 "exclude_column_names": [
                   "Unnamed: 0",
-                  "index"
+                  "index",
+                  "image_size",
+                  "image_Height",
+                  "image_Width",
+                  "image_Format",
+                  "image_mode",
+                  "image_Animated",
+                  "image_Frames"
                 ],
                 "exclude_semantic_types": [
                   "numeric",
@@ -3415,7 +1759,7 @@
           "datasource_name": "my_datasource",
           "limit": 1000
         },
-        "citation_date": "2022-06-14T21:55:47.092411Z",
+        "citation_date": "2022-06-15T05:13:52.077845Z",
         "comment": "Created suite added via CLI"
       }
     ],
