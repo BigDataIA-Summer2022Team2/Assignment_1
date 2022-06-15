@@ -12,8 +12,6 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
-
-
 @app.get("/api/get/aircraftClassRequest/")
 async def aircraftClassRequest(request : str = Query(default="F16",max_length=5)):
     logger.info('=============== API start ===============')
@@ -45,16 +43,33 @@ async def getAllImgInfo():
     
     return myFunctions.getAllInfo()
 
-@app.get("/pandas/html/", response_class=HTMLResponse)
-async def getPandasHtmlPage():
+@app.get("/pandas/html/csv/", response_class=HTMLResponse)
+async def getPandasCsvOutputHtmlPage():
 
     logger.info('=============== API start ===============')
 
-    funcName = getattr(myFunctions.getPandasProfilingHtmlOutput,'__name__')
+    funcName = getattr(myFunctions.getPandasProfilingCsvHtmlOutput,'__name__')
     logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 
 
-    response = myFunctions.getPandasProfilingHtmlOutput()
+    response = myFunctions.getPandasProfilingCsvHtmlOutput()
+
+
+    logger.info('=============== API end ===============\n\n')
+
+    return response
+
+
+@app.get("/pandas/html/image/", response_class=HTMLResponse)
+async def getPandasImageOutputHtmlPage():
+
+    logger.info('=============== API start ===============')
+
+    funcName = getattr(myFunctions.getPandasProfilingImageHtmlOutput,'__name__')
+    logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+
+
+    response = myFunctions.getPandasProfilingImageHtmlOutput()
 
 
     logger.info('=============== API end ===============\n\n')
@@ -95,17 +110,17 @@ async def home():
 async def displayImage():
     logger.info('=============== API start ===============')
 
-    funcName = getattr(myFunctions.showImg,'__name__')
+    funcName = getattr(myFunctions.showRandomImg,'__name__')
     logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 
     logger.info('=============== API end ===============\n\n')
 
-    return myFunctions.showImg()
+    return myFunctions.showRandomImg()
 
 
 
 @app.get("/api/get/random/")
-async def getOneRandomImage(): # default 5 images with their info
+async def getOneRandomImage(): 
     
     logger.info('=============== API start ===============')
     funcName = getattr(myFunctions.getOneRandomImage,'__name__')
@@ -119,15 +134,6 @@ async def getOneRandomImage(): # default 5 images with their info
     return response
 
 
-
-
-
-
-
-
-@app.get("/api/get/oneImageAircrafts/")
-async def getOneImeNumAircrafts():
-    pass
 
 
 
