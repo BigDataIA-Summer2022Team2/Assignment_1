@@ -8,6 +8,7 @@ def imgToPixel(img_name):
     img_path = current_dir + "\\" + img_name
 
     open_img = Image.open(img_path)
+    
     img_data = np.asarray(open_img)
     #print(img_data.shape)
 
