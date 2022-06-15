@@ -4,7 +4,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from traitlets import default
 from log.logger import logger
-import os,sys,time
+import time
 import myFunctions
 
 app = FastAPI()
@@ -134,7 +134,18 @@ async def getOneRandomImage():
     return response
 
 
+@app.get("/greatexpectations/", response_class=HTMLResponse)
+async def displayGreatExpectationHtmlOutput():
 
+    logger.info('=============== API start ===============')
+
+    funcName = getattr(myFunctions.showGreatExpectationsHtmlOutput,'__name__')
+    logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+
+    logger.info('=============== API end ===============\n\n')
+
+    return myFunctions.showGreatExpectationsHtmlOutput()
+    
 
 
 

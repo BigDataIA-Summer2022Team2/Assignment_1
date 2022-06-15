@@ -132,7 +132,7 @@ def getAllInfo():
     
     return response
 
-# @Description: Input aircraft class 
+# @Description: Input aircraft class  F16
 # @Author: Cheng Wang
 # @UpdateDate: 6/14/2022
 def aircraftClassRequest(request):
@@ -300,11 +300,14 @@ def imgSizeRangeInfoRequest(request):
     pass
 
 #Todo
-# @Description: Input aircraft position range [xmin,xmax,ymin,ymax] 
+# @Description: Input aircraft position range [xmin,xmax,ymin,ymax]  
 # @Author: Cheng Wang
 # @UpdateDate: 6/14/2022
 def imgSizeRangeRequest(request):
     pass
+
+#Todo input num aircrafts -> img info output option:class
+
 
 #Todo
 # @Description: Heightlight aircraft bounding box like square or rectangle with color yellow or red
@@ -313,7 +316,12 @@ def imgSizeRangeRequest(request):
 def HighlightAircraftBoundingBox(request):
     pass
 
-
+# def showGreatExpectationsHtmlOutput():
+#     abs_path = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
+#     html_path = abs_path+"\\great_expectations\\uncommitted\\data_docs\\local_site\\validations/MetadataSuite\\__none__\\20220615T183126.806156Z/45466ce3805c72dba66432ead393904c.html"
+#     html_file = open(html_path, 'r', encoding='utf-8')
+#     response = html_file.read()
+#     return response
 
 
 
