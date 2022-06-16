@@ -13,6 +13,7 @@ from PIL.ExifTags import TAGS
 import pandas as pd
 import os
 import boto3
+from smart_open import smart_open
 
 def create_metadata(image_directory):
     '''
@@ -47,7 +48,6 @@ def create_metadata(image_directory):
         print("Inserted in DataFrame")
 
     df_final = pd.DataFrame.from_dict(info_dict)
-
     df = df_final.T
     df.reset_index(inplace= True)
     #print("Merging Extra Files")
@@ -56,23 +56,29 @@ def create_metadata(image_directory):
     print("***************************")
     print(df.head())
 
-def downloadDirectoryFroms3(bucketName, remoteDirectoryName):
-    s3_resource = boto3.resource(
-    service_name='s3',
-    region_name='us-east-1',
-    aws_access_key_id='AKIAXUUXEPBEC4KILU6U',
-    aws_secret_access_key='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')
+# def downloadDirectoryFroms3(bucketName, remoteDirectoryName):
+#     s3_resource = boto3.resource(
+#     service_name='s3',
+#     region_name='us-east-1',
+#     aws_access_key_id='AKIAXUUXEPBEC4KILU6U',
+#     aws_secret_access_key='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')
 
-    bucket = s3_resource.Bucket(bucketName) 
+#     bucket = s3_resource.Bucket(bucketName) 
 
-    for obj in bucket.objects.filter(Prefix = remoteDirectoryName):
-        if not os.path.exists(os.path.dirname(obj.key)):
-            os.makedirs(os.path.dirname(obj.key))
-        bucket.download_file(obj.key, obj.key) # save to same path
+#     for obj in bucket.objects.filter(Prefix = remoteDirectoryName):
+#         if not os.path.exists(os.path.dirname(obj.key)):
+#             os.makedirs(os.path.dirname(obj.key))
+#         bucket.download_file(obj.key, obj.key) # save to same path
 
+# s3_resource = boto3.resource(
+#     service_name='s3',
+#     region_name='us-east-1',
+#     aws_access_key_id='AKIAXUUXEPBEC4KILU6U',
+#     aws_secret_access_key='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')
 
+# bucket = s3_resource.Bucket('damg7245-amazon-s3')
+# prefix_objs = bucket.objects.filter(Prefix="image/")
 #run when file is directly executed
 if __name__ == '__main__':
-    downloadDirectoryFroms3('damg7245-amazon-s3', 'image')
-    create_metadata('./image')
+    create_metadata(prefix_objs)
     print("done")
