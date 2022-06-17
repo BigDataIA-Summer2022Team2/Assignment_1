@@ -1,7 +1,10 @@
 Assignment 1
 ==============================
 
-A short description of the project.
+WE ATTEST THAT WE HAVEN’T USED ANY OTHER STUDENTS’ WORK IN 
+OUR ASSIGNMENT AND ABIDE BY THE POLICIES LISTED IN THE STUDENT 
+HANDBOOK 
+Contribution: Cheng Wang: 50% Meihu Qin: 50%
 
 Project Organization
 ------------
