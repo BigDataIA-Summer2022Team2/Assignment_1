@@ -2,7 +2,6 @@ from fastapi import FastAPI, Query, Path
 from typing import Union
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from traitlets import default
 from log.logger import logger
 import time
 import myFunctions
@@ -11,14 +10,13 @@ app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-
 @app.get("/api/get/aircraftClassRequest/")
 async def aircraftClassRequest(request : str = Query(default="F16",max_length=5)):
     logger.info('=============== API start ===============')
     funcName = getattr(myFunctions.getTopNAircraftClassRequest,'__name__')
     logger.info('Call Interface: {interface}',interface=funcName)
     logger.info( 'Current Time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
-    
+     
     response = myFunctions.aircraftClassRequest(request)
 
     logger.info( 'Current Time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
@@ -132,23 +130,6 @@ async def getOneRandomImage():
     logger.info( 'Process end: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
     logger.info('=============== API end ===============')
     return response
-
-
-@app.get("/greatexpectations/", response_class=HTMLResponse)
-async def displayGreatExpectationHtmlOutput():
-
-    logger.info('=============== API start ===============')
-
-    funcName = getattr(myFunctions.showGreatExpectationsHtmlOutput,'__name__')
-    logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
-
-    logger.info('=============== API end ===============\n\n')
-
-    return myFunctions.showGreatExpectationsHtmlOutput()
-    
-
-
-
 
 
 
