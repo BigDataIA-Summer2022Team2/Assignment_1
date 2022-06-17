@@ -1,5 +1,13 @@
+import json
 import pytest
 from _pytest.fixtures import SubRequest
+
+from pathlib import Path
+import sys
+
+path = str(Path(Path(__file__).parent.absolute()).parent.absolute())
+sys.path.insert(0, path)
+from api_functions import getS3BucketBody
 
 
 # @pytest.mark.parametrize('username,password',[('','xiaoming123434'),('',''),('xiaowang','')])
@@ -13,51 +21,13 @@ from _pytest.fixtures import SubRequest
 #     print(f'{username}--{password}')
 
 
-########################################################
-# @pytest.mark.parametrize('combined_csv',['combined.csv','hello.csv','JgcC4HsilyY4sNNJ2ElyqZgO3OPwKN6hAoDVm5O6.csv'])
-# def test_getAwsS3BucketBody(combined_csv):
-#     assert combined_csv == 'combined.csv'
-#     print(combined_csv)
-#     print(s3.getS3BucketBodyInfo(combined_csv))
 
-
-@pytest.fixture
-def pytestRequest(request:SubRequest):
-    yield
-    #print("name:",request.node.name,request.node.rep_call.outcome)
-    outcome = request.node.rep_call.outcome
-    name = request.node.name
-    if(outcome == 'failed'):
-        print(name,"用例失败...")
-    elif(outcome == 'passed'):
-        print(name,"用例成功...")
-    else:
-        print(name,"用例 未执行或有问题...")
-
-# @pytest.fixture
-# def test_1(pytestRequest):
-#     return 1
-
-# @pytest.mark.parametrize('val',[1])
-# def test_demo(test_1,val):
-#     assert test_1 == val
-#     print("result",test_1)
-
-
-def test_1(pytestRequest):
-    assert 1==1
-
-def test_2(pytestRequest):
-    assert 1==2
-
-def test_3(pytestRequest):
-    assert 1==2
+@pytest.mark.parametrize('filename,className',[('4a042db1cef213a1ed865422e6355f76',''),('','F16')])
+def test_getAwsS3BucketBody(filename,className):
+    json_reponse = {'249': {'filename': '4a042db1cef213a1ed865422e6355f76', 'width': '1600', 'height': '1043', 'class': 'F117', 'xmin': '165', 'ymin': '910', 'xmax': '496', 'ymax': '1013'}, '250': {'filename': '4a042db1cef213a1ed865422e6355f76', 'width': '1600', 'height': '1043', 'class': 'F16', 'xmin': '35', 'ymin': '744', 'xmax': '234', 'ymax': '840'}, '251': {'filename': '4a042db1cef213a1ed865422e6355f76', 'width': '1600', 'height': '1043', 'class': 'F16', 'xmin': '158', 'ymin': '735', 'xmax': '260', 'ymax': '827'}, '252': {'filename': '4a042db1cef213a1ed865422e6355f76', 'width': '1600', 'height': '1043', 'class': 'F16', 'xmin': '376', 'ymin': '735', 'xmax': '625', 'ymax': '825'}, '253': {'filename': '4a042db1cef213a1ed865422e6355f76', 'width': '1600', 'height': '1043', 'class': 'F16', 'xmin': '1325', 'ymin': '744', 'xmax': '1563', 'ymax': '835'}, '254': {'filename': '4a042db1cef213a1ed865422e6355f76', 'width': '1600', 'height': '1043', 'class': 'F117', 'xmin': '616', 'ymin': '59', 'xmax': '751', 'ymax': '110'}}
     
-def test_4(pytestRequest):
-    assert 1==2
+    assert getS3BucketBody.getS3BucketBodyInfo(filename,className)== json_reponse
 
-def test_5(pytestRequest):
-    assert 1==1
 
 if __name__=='__main__':
      pytest.main()
