@@ -3,9 +3,8 @@ import json
 from json import load
 from boto3 import client
 import boto3
-from log.logger import logger
 
-def getS3BucketBodyInfo(filename="",width=0,height=0,className="",xmin=0,ymin=0,xmax=0,ymax=0):
+def getAircraftPositionFilterResult(xmin=0,ymin=0,xmax=0,ymax=0):
     key = 'csv/combined.csv'
     abs_path = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
     csv_path = abs_path+"\\credentials\\aws_s3_credentials.json"
@@ -29,6 +28,8 @@ def getS3BucketBodyInfo(filename="",width=0,height=0,className="",xmin=0,ymin=0,
     index_no = 0
     result={}
 
+    # filename="4a042db1cef213a1ed865422e6355f76"
+    # className=""
 
     for i in range(len(csv_header_value_list)):
         if(i > 0):
@@ -38,36 +39,25 @@ def getS3BucketBodyInfo(filename="",width=0,height=0,className="",xmin=0,ymin=0,
                        
             csv_header_value_list[i] = csv_header_value_list[i].split(',') #  slipt value list ','
             
-            #width and height check
-            if(width==0):
-                width=99999
-            if(height==0):
-                height=99999
-            width_check= 0 < int(csv_header_value_list[i][1]) < width
-            height_check = 0 < int(csv_header_value_list[i][2]) < height
+      
             
             
             #xmin ymin xmax ymax check
             if(xmax == 0):
-                _xmax = int(csv_header_value_list[i][1]) #width
+                xmax = int(csv_header_value_list[i][1]) #width
             if(ymax == 0):
-                _ymax = int(csv_header_value_list[i][2]) #height
+                ymax = int(csv_header_value_list[i][2]) #height
 
-            xmin_check = xmin <= int(csv_header_value_list[i][4]) < _xmax
-            xmax_check = xmin < int(csv_header_value_list[i][6]) <= _xmax
-            ymin_check = ymin <= int(csv_header_value_list[i][5]) < _ymax
-            ymax_check = ymin < int(csv_header_value_list[i][7]) <= _ymax
+            xmin_check = xmin <= int(csv_header_value_list[i][4]) < xmax
+            xmax_check = xmin < int(csv_header_value_list[i][6]) <= xmax
+            ymin_check = ymin <= int(csv_header_value_list[i][5]) < ymax
+            ymax_check = ymin < int(csv_header_value_list[i][7]) <= ymax
             
-            if(filename == '' or filename == csv_header_value_list[i][0]):
-                if(className == '' or className == csv_header_value_list[i][3]):
-                    if(width_check and height_check):
-                        if(xmin_check and xmax_check and ymin_check and ymax_check):
-                            result[str(index_no)] = {}
-                            for j in range(len(inner_index_num)): #? 8 elements
-                                result[str(index_no)][header_list[j]] = csv_header_value_list[i][j] # i = 0      |      j = 0 - 7
-    
-    if(result == {}):
-        logger.error("No data Found: HTTP 404")
-        return {"error":"No data"} 
+           
+            if(xmin_check and xmax_check and ymin_check and ymax_check):
+                result[str(index_no)] = {}
+                for j in range(len(inner_index_num)): #? 8 elements
+                    result[str((index_no))][header_list[j]] = csv_header_value_list[i][j] # i = 0      |      j = 0 - 7
+            
     return result
 
