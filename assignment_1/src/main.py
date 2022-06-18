@@ -5,10 +5,38 @@ from fastapi.staticfiles import StaticFiles
 from log.logger import logger
 import time
 import myFunctions
+from pydantic import BaseModel
+
+from pathlib import Path
+import sys
+
+path = str(Path(Path(__file__).parent.absolute()))
+sys.path.insert(0, path)
+from api_functions import getS3BucketBody
+
 
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+@app.get("/api/allInputInfoRequest/")
+async def allInputInfoRequest(filename:str,width:int,height:int,className:str,xmin:int,ymin:int,xmax:int,ymax:int):
+    return getS3BucketBody.getS3BucketBodyInfo(filename,width,height,className,xmin,xmax,ymin,ymax)
+    
+    
+@app.get("/api/test/")
+async def allInputInfoRequest(filename:Union[str,None]= Query(default="", max_length=32),
+                              width:Union[int,None] = Query(default=0),
+                              height:Union[int,None] = Query(default=0),
+                              className:str = Query(default="", max_length=5),
+                              xmin:Union[int,None] = Query(default=0),
+                              ymin:Union[int,None] = Query(default=0),
+                              xmax:Union[int,None] = Query(default=0),
+                              ymax:Union[int,None] = Query(default=0)):
+    return getS3BucketBody.getS3BucketBodyInfo(filename,width,height,className,xmin,ymin,xmax,ymax)   
+    
+
 
 @app.get("/api/get/aircraftClassRequest/")
 async def aircraftClassRequest(request : str = Query(default="F16",max_length=5)):
@@ -133,7 +161,28 @@ async def getOneRandomImage():
 
 
 
-
+# @Description: input basemodel
+# @Author: Cheng Wang
+# @UpdateDate: 6/7/2022
+class csvInfo(BaseModel):
+    #description: Union[str, None] = None
+    #price: float
+    #tax: Union[float, None] = None
+    fileName : str=None
+    width : int=None
+    height : int=None
+    className : str # 飞机种类的 class 为 python 内置关键字 需要转换
+    xmin : int=None
+    ymin : int=None
+    xmax : int=None
+    ymax : int=None
+    base64 : str=None
+    RGB : dict=None
+    valid_width : int=None
+    valid_height : int=None
+    fileSize : str=None
+    aircraft_more_than_1 : bool=None
+    aircraft_num : int=None
 
 
 ############################### DEMO ##################################

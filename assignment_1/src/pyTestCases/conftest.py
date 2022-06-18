@@ -31,11 +31,18 @@ import pytest
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
-    #print("Calling pytest runtest makereport hook...")
-    # execute all other hooks to obtain the report object
-    outcome = yield
-    rep = outcome.get_result()
-    #print(rep)
-    # set a report attribute for each phase of a call, which can
-    # be "setup", "call", "teardown"
-    setattr(item,"rep_" + rep.when, rep)
+
+    out = yield
+    
+    
+    report = out.get_result()
+    if(report.when == "call"):
+        print("\n====================================================")
+        print('Test Result:\t%s' % out)    
+        print('Test Report:\t%s' % report)
+        print('Process:\t%s' % report.when)
+        print('id:\t%s' % report.nodeid)
+        print('description:\t%s' % str(item.function.__doc__))
+        print('result:\t%s' % report.outcome)
+    
+    
