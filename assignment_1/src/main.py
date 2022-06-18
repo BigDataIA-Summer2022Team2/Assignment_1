@@ -4,166 +4,251 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from log.logger import logger
 import time
-import myFunctions
 from pydantic import BaseModel
-
 from pathlib import Path
 import sys
 
 path = str(Path(Path(__file__).parent.absolute()))
 sys.path.insert(0, path)
 from api_functions import getS3BucketBody
-
+from api_functions import numAndClassNameFiltered
+from api_functions import fileNameAndClassNameFiltered
+from api_functions import imgSizeRangeFiltered
+from api_functions import aircraftPositionFilter
+from api_functions import displayPandasCsvHtmlOutput
+from api_functions import displayPandasImagesHtmlOutput
+from api_functions import getNumRandomImages
+from api_functions import displayImage
+from api_functions import returnHomePage
 
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+# Home page
+@app.get("/", response_class=HTMLResponse)
+async def home():
+    logger.info('=============== API start ===============')
+    logger.info('mode: HTTP GET')
+    funcName = getattr(returnHomePage.getHomePage,'__name__')
+    logger.info('Call: {interface}',interface=funcName)
+    logger.info( 'Now time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    response = returnHomePage.getHomePage()
+    logger.info('=============== API end ===============\n\n')
 
-@app.get("/api/allInputInfoRequest/")
-async def allInputInfoRequest(filename:str,width:int,height:int,className:str,xmin:int,ymin:int,xmax:int,ymax:int):
-    return getS3BucketBody.getS3BucketBodyInfo(filename,width,height,className,xmin,xmax,ymin,ymax)
-    
-    
-@app.get("/api/test/")
-async def allInputInfoRequest(filename:Union[str,None]= Query(default="", max_length=32),
+    return response
+
+# info 8 values for filter and return response
+@app.get("/api/get/infoFilter/")
+async def inputInfoFilterRequest(filename:Union[str,None]= Query(default="", max_length=40),
                               width:Union[int,None] = Query(default=0),
                               height:Union[int,None] = Query(default=0),
-                              className:str = Query(default="", max_length=5),
+                              className:Union[str,None] = Query(default=""),
                               xmin:Union[int,None] = Query(default=0),
                               ymin:Union[int,None] = Query(default=0),
                               xmax:Union[int,None] = Query(default=0),
                               ymax:Union[int,None] = Query(default=0)):
-    return getS3BucketBody.getS3BucketBodyInfo(filename,width,height,className,xmin,ymin,xmax,ymax)   
-    
-
-
-@app.get("/api/get/aircraftClassRequest/")
-async def aircraftClassRequest(request : str = Query(default="F16",max_length=5)):
     logger.info('=============== API start ===============')
-    funcName = getattr(myFunctions.getTopNAircraftClassRequest,'__name__')
-    logger.info('Call Interface: {interface}',interface=funcName)
-    logger.info( 'Current Time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
-     
-    response = myFunctions.aircraftClassRequest(request)
-
-    logger.info( 'Current Time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    logger.info('mode: HTTP GET')
+    logger.info( 'Function start time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    funcName = getattr(getS3BucketBody.getS3BucketBodyInfo,'__name__') # return function name which is called
+    logger.info('Call: {interface}',interface=funcName)
+    
+    className = className.upper()
+    response = getS3BucketBody.getS3BucketBodyInfo(filename,width,height,className,xmin,ymin,xmax,ymax) # get return response
+    
+    if(response == {}):
+        logger.error("No data Found: HTTP 404")
+    
+    
+    logger.info( 'Function end time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
     logger.info('=============== API end ===============\n\n')
-    return response
+    return  response
 
+# fileName , class input and return response
+@app.get("/api/get/fileNameAndClass/")
+async def aircraftClassAndFileNameRequest(className:str,
+                              filename:Union[str,None]= Query(default="", max_length=32)):
+    logger.info('=============== API start ===============')
+    logger.info('mode: HTTP GET')
+    logger.info('Function start time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    funcName = getattr(fileNameAndClassNameFiltered.getFileNameClassNameFilteredResult,'__name__') # return function name which is called
+    logger.info('Call: {interface}',interface=funcName)
+    className = className.upper()
+    
+    response = fileNameAndClassNameFiltered.getFileNameClassNameFilteredResult(className,filename) # get return response
+    
+    if(response == {}):
+        logger.error("No data Found: HTTP 404")
+        
+    logger.info( 'Function end time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    logger.info('=============== API end ===============\n\n')
+    
+    
+    
+    return  response
 
-@app.get("/api/get/fileNameRequest/")
-async def fileNameRequest(request : str = Query(default="0cd99a9ee135c7618006540f5b6d9b1b",max_length=32)):
-    response = myFunctions.aircraftFileNameRequest(request)
-    return response
+# (width , weight) range and get response
+@app.get("/api/get/imgSizeRange/")
+async def imgSzieRangeRequest(width:Union[int,None] = Query(default=0),
+                              height:Union[int,None] = Query(default=0)):
+    
+    logger.info('=============== API start ===============')
+    logger.info('mode: HTTP GET')
+    logger.info('Function start time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    funcName = getattr(imgSizeRangeFiltered.getimgSizeRangeFilteredResult,'__name__') # return function name which is called
+    logger.info('Call: {interface}',interface=funcName)
+    
+    response = imgSizeRangeFiltered.getimgSizeRangeFilteredResult(width,height) # get return response
+    
+    if(response == {}):
+        logger.error("No data Found: HTTP 404")
+    
+    logger.info( 'Function end time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    logger.info('=============== API end ===============\n\n')
+    return  response
 
+# (xmin,ymin,xmax,ymax) range and get response
+@app.get("/api/get/aircraftPositionRange/")
+async def aircraftPositionRequest(xmin:Union[int,None] = Query(default=0),
+                                  ymin:Union[int,None] = Query(default=0),
+                                  xmax:Union[int,None] = Query(default=0),
+                                  ymax:Union[int,None] = Query(default=0)):
+    
+    logger.info('=============== API start ===============')
+    logger.info('mode: HTTP GET')
+    logger.info('Function start time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    funcName = getattr(aircraftPositionFilter.getAircraftPositionFilterResult,'__name__') # return function name which is called
+    logger.info('Call: {interface}',interface=funcName)
+    
+    response = aircraftPositionFilter.getAircraftPositionFilterResult(xmin,ymin,xmax,ymax) # get return response
+    
+    if(response == {}):
+        logger.error("No data Found: HTTP 404")
+    
+    logger.info( 'Function end time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    logger.info('=============== API end ===============\n\n')
+    return  response
 
+# No input value and get response(all info)
 @app.get('/api/get/allInfo/')
 async def getAllImgInfo():
     logger.info('=============== API start ===============')
-
-    funcName = getattr(myFunctions.getAllInfo,'__name__')
-    logger.info('Call {interface}  Now Time：{tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
-
-    logger.info('=============== API end ===============\n\n')
+    logger.info('mode: HTTP GET')
+    logger.info('Function start time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    funcName = getattr(getS3BucketBody.getS3BucketBodyInfo,'__name__') # return function name which is called
+    logger.info('Call: {interface}',interface=funcName)
     
-    return myFunctions.getAllInfo()
+    response = getS3BucketBody.getS3BucketBodyInfo() # get return response
+    
+    if(response == {}):
+        logger.error("No data Found: HTTP 404")
+    
+    logger.info( 'Function end time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    logger.info('=============== API end ===============\n\n')
+    return response
 
+# input aircraft Num and output all images == numbers
+# option: class -> input all filtered info contain input class name
+@app.get("/api/get/aircraftNumandClass/")
+async def numAndClassFiteredInfoRequest(num:int,
+                                         className:Union[str,None] = Query(default="")):
+    logger.info('=============== API start ===============')
+    logger.info('mode: HTTP GET')
+    logger.info('Function start time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    
+    funcName = getattr(numAndClassNameFiltered.getNumAndClassFilteredResult,'__name__') # return function name which is called
+    logger.info('Call: {interface}',interface=funcName)
+    
+    className = className.upper()
+    response = numAndClassNameFiltered.getNumAndClassFilteredResult(num,className)
+    
+    
+    if(response == {}):
+        logger.error("No data Found: HTTP 404")
+        
+    logger.info( 'Function end time: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    logger.info('=============== API end ===============\n\n')
+    return  response
+
+
+# get random Num images info
+@app.get("/api/get/random/{num}")
+async def getNumRandomImage(num: int = Path(title="Number of random aircrafts", gt=0, le=9)): 
+    
+    logger.info('=============== API start ===============')
+    funcName = getattr(getNumRandomImages.getNumRandomImageFileNames,'__name__')
+    logger.info('Call: {interface}',interface=funcName)
+    logger.info( 'Process start: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+
+    response =  getNumRandomImages.getNumRandomImageFileNames(num)
+    
+    if(response == {}):
+        logger.error("No data Found: HTTP 404")
+        
+    logger.info( 'Process end: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+    logger.info('=============== API end ===============')
+    return response
+
+######################### Featured API for display #########################
+
+# display pandas csv info html output
 @app.get("/pandas/html/csv/", response_class=HTMLResponse)
 async def getPandasCsvOutputHtmlPage():
 
     logger.info('=============== API start ===============')
 
-    funcName = getattr(myFunctions.getPandasProfilingCsvHtmlOutput,'__name__')
+    funcName = getattr(displayPandasCsvHtmlOutput.getPandasProfilingCsvHtmlOutput,'__name__')
     logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 
 
-    response = myFunctions.getPandasProfilingCsvHtmlOutput()
+    response = displayPandasCsvHtmlOutput.getPandasProfilingCsvHtmlOutput()
 
+    if(response == {}):
+        logger.error("No data Found: HTTP 404")
 
     logger.info('=============== API end ===============\n\n')
 
     return response
 
-
+# display pandas profling img info html output
 @app.get("/pandas/html/image/", response_class=HTMLResponse)
 async def getPandasImageOutputHtmlPage():
 
     logger.info('=============== API start ===============')
 
-    funcName = getattr(myFunctions.getPandasProfilingImageHtmlOutput,'__name__')
+    funcName = getattr(displayPandasImagesHtmlOutput.getPandasProfilingImageHtmlOutput,'__name__')
     logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 
 
-    response = myFunctions.getPandasProfilingImageHtmlOutput()
+    response = displayPandasImagesHtmlOutput.getPandasProfilingImageHtmlOutput()
 
+    if(response == {}):
+        logger.error("No data Found: HTTP 404")
 
     logger.info('=============== API end ===============\n\n')
 
     return response
     
 
-@app.get("/pandas/json/")
-async def getPandasJsonPage():
 
+#Todo
+# display random image and its info
+@app.get("/display/image/", response_class=HTMLResponse)
+async def displayImageInHTML():
     logger.info('=============== API start ===============')
 
-    funcName = getattr(myFunctions.getPandasProfilingJsonOutput,'__name__')
-    logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
-
-
-    response = myFunctions.getPandasProfilingJsonOutput()
-
-
-    logger.info('=============== API end ===============\n\n')
-
-    return response
-
-
-@app.get("/", response_class=HTMLResponse)
-async def home():
-    logger.info('=============== API start ===============')
-
-    funcName = getattr(myFunctions.getHomePage,'__name__')
+    funcName = getattr(displayImage.showRandomImg,'__name__')
     logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 
     logger.info('=============== API end ===============\n\n')
 
-    return myFunctions.getHomePage()
-
-
-@app.get("/image/", response_class=HTMLResponse)
-async def displayImage():
-    logger.info('=============== API start ===============')
-
-    funcName = getattr(myFunctions.showRandomImg,'__name__')
-    logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
-
-    logger.info('=============== API end ===============\n\n')
-
-    return myFunctions.showRandomImg()
-
-
-
-@app.get("/api/get/random/")
-async def getOneRandomImage(): 
-    
-    logger.info('=============== API start ===============')
-    funcName = getattr(myFunctions.getOneRandomImage,'__name__')
-    logger.info('Call: {interface}',interface=funcName)
-    logger.info( 'Process start: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
-
-    response = myFunctions.getOneRandomImage()
-
-    logger.info( 'Process end: {tiems}',tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
-    logger.info('=============== API end ===============')
-    return response
-
+    return displayImage.showRandomImg()
 
 
 # @Description: input basemodel
 # @Author: Cheng Wang
-# @UpdateDate: 6/7/2022
+# @UpdateDate: 6/13/2022
 class csvInfo(BaseModel):
     #description: Union[str, None] = None
     #price: float
@@ -183,56 +268,3 @@ class csvInfo(BaseModel):
     fileSize : str=None
     aircraft_more_than_1 : bool=None
     aircraft_num : int=None
-
-
-############################### DEMO ##################################
-# @app.get("/testtttt/")
-# async def read_items(aircraft_class: str = Query(default="e.g. F16",max_length=16)):
-#     #results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
-    
-#     # test
-#     #aircraft_class: int = Path(title="The ID of the item to get"),
-#     results = {"aircraft_class": aircraft_class}
-#     return results
-
-
-
-# @app.get("/testttttttt/{item_id}")
-# async def read_items(
-#     item_id: int = Path(title="The ID of the item to get"),
-#     q: Union[str, None] = Query(default=None, alias="item-query"),
-# ):
-#     results = {"item_id": item_id}
-#     if q:
-#         results.update({"q": q})
-#     return results
-
-
-# @app.get('/test/')
-# async def root():
-#     logger.info('=============== API start ===============')
-#     logger.info('URL: 127.0.0.1:/8000/test/')
-#     logger.info('HTTP get')
-#     # get 请求
-#     logger.debug(f"这是日志！")
-#     logger.info('这是 {interface} 接口, 当前时间戳为：{tiems}',interface="root", tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
-#     logger.error(f"这是一个 error 信息!")
-#     logger.warning(f"这是一个 warning 信息!")
-
-
-#     logger.info('=============== API end ===============\n\n')
-#     return {'message':'Hello World!'}
-
-
-# @app.get("/items/{item_id}")
-# async def read_item(item_id):
-#     return {"item_id": item_id}
-
-# @app.get("/students/{student_id}")
-# async def students_info(student_id: int, str = None):
-#     return {"item_id": student_id}
-
-
-# @app.post("/posts/")
-# def post_msg(body:dict):
-#     return body
