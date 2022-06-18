@@ -20,6 +20,7 @@ from api_functions import displayPandasImagesHtmlOutput
 from api_functions import getNumRandomImages
 from api_functions import displayImage
 from api_functions import returnHomePage
+from api_functions import displaymodelcardhtmloutput
 
 app = FastAPI()
 
@@ -211,6 +212,7 @@ async def getPandasCsvOutputHtmlPage():
 
     return response
 
+
 # display pandas profling img info html output
 @app.get("/pandas/html/image/", response_class=HTMLResponse)
 async def getPandasImageOutputHtmlPage():
@@ -230,7 +232,23 @@ async def getPandasImageOutputHtmlPage():
 
     return response
     
+@app.get("/modelcard/html/", response_class=HTMLResponse)
+async def getModelCardOutputHtmlPage():
 
+    logger.info('=============== API start ===============')
+
+    funcName = getattr(displaymodelcardhtmloutput.displayModelCardHtmlOutput,'__name__')
+    logger.info('Interface Name: {interface}\tNow Time: {tiems}',interface=funcName, tiems=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+
+
+    response = displaymodelcardhtmloutput.displayModelCardHtmlOutput()
+
+    if(response == {}):
+        logger.error("No data Found: HTTP 404")
+
+    logger.info('=============== API end ===============\n\n')
+
+    return response
 
 #Todo
 # display random image and its info
