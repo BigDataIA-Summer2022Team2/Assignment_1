@@ -8,7 +8,9 @@ try:
     from api_functions import fileNameFIltered
 except ModuleNotFoundError:
     print("Cannot find the moudule!")
-
+# @Description: take a integer number as input, output the infomation about the given number of images
+# @Author: Cheng Wang
+# @UpdateDate: 6/12/2022
 def getNumRandomImageFileNames(num:int):
     if(num > 9):
         return {"error": "You should give a number which is less than 10!"}

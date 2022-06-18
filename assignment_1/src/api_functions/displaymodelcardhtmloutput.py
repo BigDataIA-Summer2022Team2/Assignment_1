@@ -1,5 +1,5 @@
 import os
-# @Description: show Pandas Profiling csv info Html page
+# @Description: show model card info Html page
 # @Author: Cheng Wang
 # @UpdateDate: 6/17/2022
 def displayModelCardHtmlOutput():

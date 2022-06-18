@@ -3,7 +3,9 @@ import json
 from json import load
 from boto3 import client
 import boto3
-
+# @Description: take class name and file name as input, return information of files that meet those two requirements
+# @Author: Cheng Wang
+# @UpdateDate: 6/12/2022
 def getFileNameClassNameFilteredResult(className:str,filename:str):
     key = 'csv/combined.csv'
     abs_path = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))

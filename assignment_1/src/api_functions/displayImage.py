@@ -5,7 +5,9 @@ from boto3 import client
 import boto3
 import base64
 import random
-
+# @Description: display 5 random images
+# @Author: Cheng Wang
+# @UpdateDate: 6/12/2022
 def showRandomImg():
     data1="""
         <html lang="en">

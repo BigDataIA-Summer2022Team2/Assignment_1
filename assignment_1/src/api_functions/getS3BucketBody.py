@@ -4,7 +4,9 @@ from json import load
 from boto3 import client
 import boto3
 from log.logger import logger
-
+# @Description: take any parameter that the file has as input, return information of files that meet those requirements
+# @Author: Cheng Wang
+# @UpdateDate: 6/12/2022
 def getS3BucketBodyInfo(filename="",width=0,height=0,className="",xmin=0,ymin=0,xmax=0,ymax=0):
     key = 'csv/combined.csv'
     abs_path = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))

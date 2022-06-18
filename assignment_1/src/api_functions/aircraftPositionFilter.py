@@ -3,7 +3,9 @@ import json
 from json import load
 from boto3 import client
 import boto3
-
+# @Description: take aircraft bounding box as a input, out put files which have the same bounding box area
+# @Author: Cheng Wang
+# @UpdateDate: 6/12/2022
 def getAircraftPositionFilterResult(xmin=0,ymin=0,xmax=0,ymax=0):
     key = 'csv/combined.csv'
     abs_path = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))

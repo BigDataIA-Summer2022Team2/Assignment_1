@@ -4,7 +4,9 @@ import json
 from json import load
 from boto3 import client
 import boto3
-
+# @Description: take integer number and class name as input, return same amount of files that have that specific class name
+# @Author: Cheng Wang
+# @UpdateDate: 6/12/2022
 
 def getNumAndClassFilteredResult(num,className=""):
     key = 'csv/combined.csv'

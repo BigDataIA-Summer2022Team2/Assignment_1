@@ -4,7 +4,9 @@ from json import load
 from tokenize import String
 from boto3 import client
 import boto3
-
+# @Description: take file name as input, return information of that file
+# @Author: Cheng Wang
+# @UpdateDate: 6/12/2022
 def getFileNameCsvInfo(filename: str):
         key = 'csv/combined.csv'
         abs_path = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
