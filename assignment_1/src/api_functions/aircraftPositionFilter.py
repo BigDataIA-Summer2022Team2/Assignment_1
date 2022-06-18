@@ -61,3 +61,4 @@ def getAircraftPositionFilterResult(xmin=0,ymin=0,xmax=0,ymax=0):
             
     return result
 
+

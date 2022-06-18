@@ -4,7 +4,7 @@ from json import load
 from boto3 import client
 import boto3
 
-def getFileNameClassNameFilteredResult(className="",filename=""):
+def getFileNameClassNameFilteredResult(className:str,filename:str):
     key = 'csv/combined.csv'
     abs_path = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
     csv_path = abs_path+"\\credentials\\aws_s3_credentials.json"
@@ -48,3 +48,8 @@ def getFileNameClassNameFilteredResult(className="",filename=""):
             
     return result
 
+# if __name__ == '__main__':
+#     try:
+#         print(getFileNameClassNameFilteredResult(adfadf,adfadf))
+#     except NameError:
+#         print("Please input correct class name or file name!")

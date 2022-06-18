@@ -4,9 +4,12 @@ from json import load
 from boto3 import client
 import boto3
 import random
-from api_functions import fileNameFIltered
+try:
+    from api_functions import fileNameFIltered
+except ModuleNotFoundError:
+    print("Cannot find the moudule!")
 
-def getNumRandomImageFileNames(num):
+def getNumRandomImageFileNames(num:int):
     if(num > 9):
         return {"error": "You should give a number which is less than 10!"}
 
@@ -52,4 +55,12 @@ def getNumRandomImageFileNames(num):
         result["image NO." + str(i+1)] = fileNameFIltered.getFileNameCsvInfo(fileName_list[i])
     
     return result
+
+
+# if __name__ == '__main__':
+#     try:
+#         print(getNumRandomImageFileNames(dfasdf))
+
+#     except NameError:
+#         print("Please input a correct file name!")
 
